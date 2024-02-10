@@ -21,13 +21,18 @@ function App() {
 
     return (
         <div>
-            <Header term={term}
-                    handleTermChange={handleTermChange}
-                    period={period}
-                    handlePeriodChange={handlePeriodChange}
-                    handleSelectedSources={handleSelectedSources}
+            <Header
+                term={term}
+                handleTermChange={handleTermChange}
+                period={period}
+                handlePeriodChange={handlePeriodChange}
+                handleSelectedSources={handleSelectedSources}
             />
-            <Body/>
+            <Body
+                term={term}
+                period={period}
+                selectedSources={selectedSources}
+            />
         </div>
     );
 }

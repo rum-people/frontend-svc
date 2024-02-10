@@ -1,0 +1,47 @@
+.post-card {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    align-items: center;
+}
+
+.white-rectangle-card {
+    background-color: white !important;
+    border-radius: 10px !important;
+    padding: 10px !important;
+    margin: 10px;
+}
+
+.icon {
+    margin-right: 10px;
+}
+
+.icon svg {
+    width: 30px;
+    height: 30px;
+}
+
+.post-content {
+    flex: 1;
+}
+
+.post-title {
+    margin-top: 0;
+    margin-bottom: 5px;
+    cursor: pointer;
+    color: black !important;
+    text-decoration: none !important;
+}
+
+.link-dark {
+    text-decoration: none !important;
+}
+
+.link-dark:hover {
+    text-decoration: underline !important;
+}
+
+.post-text {
+    margin-top: 5px;
+}

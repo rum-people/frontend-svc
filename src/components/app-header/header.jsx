@@ -13,8 +13,7 @@ function Header({term, handleTermChange, period, handlePeriodChange, handleSelec
                 <div className="tooltip">{messages.search_panel_hint}</div>
             </div>
             <div className="search-panel">
-                <SearchPanel term={term}
-                             handleTermChange={handleTermChange}
+                <SearchPanel handleTermChange={handleTermChange}
                 />
             </div>
             <div className="time-chooser-div">

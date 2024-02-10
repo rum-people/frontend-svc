@@ -1,0 +1,38 @@
+[
+  {
+    "text": "you mean the imports or tzinfo? Regarding imports, in the first line of your code snippet, you import specific classes from the module, in the second line, you also import the whole module (which of course includes the classes). Both methods are ok, just use only one of them to improve readability ;-)",
+    "socialNetwork": "Reddit",
+    "emotion": "love",
+    "link": "https://stackoverflow.com/questions/13685201/how-to-add-hours-to-current-time-in-python"
+  },
+  {
+    "text": "The question asks how to add hours, but subtracting hours could be done in two ways: 1) Use the subtraction operator (-) instead of addition operator (+); according to the documentation \"timedelta objects support certain additions and subtractions with date and datetime objects \" 2) Pass a negative value to any of the timedelta parameters; according to the documentation, \"Arguments may be ints, longs, or floats, and may be positive or negative.\"",
+    "socialNetwork": "Reddit",
+    "emotion": "surprise",
+    "link": "https://stackoverflow.com/questions/17261061/execute-sql-schema-in-psycopg2-in-python"
+  },
+  {
+    "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "socialNetwork": "News",
+    "emotions": "anger",
+    "link": "https://stackoverflow.com/questions/17261061/execute-sql-schema-in-psycopg2-in-python"
+  },
+  {
+    "text": "you mean the imports or tzinfo? Regarding imports, in the first line of your code snippet, you import specific classes from the module, in the second line, you also import the whole module (which of course includes the classes). Both methods are ok, just use only one of them to improve readability ;-)",
+    "socialNetwork": "Reddit",
+    "emotion": "fear",
+    "link": "https://stackoverflow.com/questions/13685201/how-to-add-hours-to-current-time-in-python"
+  },
+  {
+    "text": "Instead of addition operator (+); according to the documentation \"timedelta objects support certain additions and subtractions with date and datetime objects \" 2) Pass a negative value to any of the timedelta parameters; according to the documentation, \"Arguments may be ints, longs, or floats, and may be positive or negative.\"",
+    "socialNetwork": "Reddit",
+    "emotion": "surprise",
+    "link": "https://stackoverflow.com/questions/17261061/execute-sql-schema-in-psycopg2-in-python"
+  },
+  {
+    "text": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "socialNetwork": "News",
+    "emotions": "anger",
+    "link": "https://stackoverflow.com/questions/17261061/psycopg2-in-python"
+  }
+]

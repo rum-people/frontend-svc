@@ -5,9 +5,8 @@ import 'chartjs-adapter-date-fns';
 
 Chart.register(...registerables);
 
-const SentimentChart = ({data}) => {
+const MentionChart = ({data}) => {
     let datum = data[0];
-    console.log(datum)
     const chartData = {
         labels: data.map(item => item.date), datasets: datum.emotions.map((emotion, index) => ({
             label: emotion.label,
@@ -41,4 +40,4 @@ const SentimentChart = ({data}) => {
     return (<Line data={chartData} options={chartOptions}/>);
 };
 
-export default SentimentChart;
+export default MentionChart;
