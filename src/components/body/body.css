@@ -1,0 +1,40 @@
+.main-block {
+    height: 100%;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.row {
+    display: flex !important;
+    margin-bottom: 10px !important;
+    justify-content: space-between;
+}
+
+.graph-container {
+    display: flex;
+    max-width: calc(60% - 20px) !important;
+    max-height: 500px;
+    justify-content: center;
+}
+
+.other-info {
+    max-width: calc(40% - 20px) !important;
+}
+
+.graph-placeholder {
+    background-color: yellow;
+    height: 300px;
+}
+
+.white-rectangle {
+    background-color: white !important;
+    border-radius: 10px !important;
+    padding: 10px !important;
+    margin: 10px;
+}
+.orange-rectangle {
+    background-color: #ffc7b6 !important;
+    border-radius: 10px !important;
+    padding: 10px !important;
+    margin: 10px;
+}
