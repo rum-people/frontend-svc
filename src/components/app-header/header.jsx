@@ -1,9 +1,9 @@
 import React from 'react';
 import './header.css';
-import SearchPanel from "../body/search-panel/search-panel";
+import SearchPanel from "./search-panel/search-panel";
 import messages from "../utils/messages";
-import TimeChooser from "../body/time-chooser/time-chooser";
-import SourceChooser from "../body/source-chooser/source-chooser";
+import TimeChooser from "./time-chooser/time-chooser";
+import SourceChooser from "./source-chooser/source-chooser";
 
 function Header({term, handleTermChange, period, handlePeriodChange, handleSelectedSources}) {
     return (
