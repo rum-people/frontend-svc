@@ -1,0 +1,11 @@
+.time-chooser-toggle {
+    border-radius: 20px !important;
+    background-color: white !important;
+    border-color: orange !important;
+    border-width: 2px !important;
+    color: black !important;
+}
+
+.time-chooser-item:hover {
+    background-color: #fac153 !important;
+}

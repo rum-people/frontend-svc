@@ -4,9 +4,21 @@
     align-items: center;
 }
 
-.search_panel {
-    width: 30%;
+.search-panel {
+    max-width: 30%;
+    min-width: 20%;
+    margin-right: 20px;
 }
+
+.time-chooser-div {
+    margin-left: 20px;
+}
+
+.source-chooser-div {
+    margin-left: 100px;
+    margin-top: 5px;
+}
+
 .tooltip-container {
     position: relative;
 }
