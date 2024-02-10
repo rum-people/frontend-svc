@@ -1,0 +1,29 @@
+.source-item {
+    min-width: 120px;
+}
+
+.source-item label {
+    font-weight: bold;
+}
+
+.source-item input[type="checkbox"] {
+    border-radius: 7px !important;
+    width: 20px;
+    height: 20px;
+}
+
+.source-item input[type="checkbox"]:hover {
+    box-shadow: 0 0 10px orange;
+    border-color: orange;
+}
+
+.source-item input[type="checkbox"]:focus {
+    box-shadow: 0 0 10px orange;
+    border-color: orange;
+}
+
+.source-item input[type="checkbox"]:checked {
+    box-shadow: 0 0 10px orange;
+    background-color: orange;
+    border-color: orange;
+}
