@@ -1,0 +1,34 @@
+configVersion: 1
+project: "react-client"
+---
+image: builder
+from: node:21.6.1-alpine3.18
+git:
+  - add: /
+    to: /app
+    stageDependencies:
+      install:
+        - package*.json
+      setup:
+        - "**/*"
+shell:
+  install:
+    - cd /app
+    - npm install
+  setup:
+    - cd /app
+    - npm run build
+
+---
+image: client
+from: nginx:1.25.3-alpine3.18
+docker:
+  WORKDIR: /usr/share/nginx
+git:
+  - add: /nginx.conf
+    to: /etc/nginx/nginx.conf
+import:
+  - image: builder
+    add: /app/build
+    to: /usr/share/nginx/html
+    after: setup
