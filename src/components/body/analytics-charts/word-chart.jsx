@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Line} from 'react-chartjs-2';
+import {Bar, Line} from 'react-chartjs-2';
 import {Chart, registerables} from 'chart.js';
 import 'chartjs-adapter-date-fns';
 import AnalyticService from "../../../services/AnalyticService";
@@ -62,8 +62,16 @@ const MentionChart = ({term, period, selectedSources}) => {
         };
     }
 
+    function getChart() {
+        if (data.length === 1) {
+            return <Bar data={getChartData()} options={getChartOptions()}/>
+        } else {
+            return <Line data={getChartData()} options={getChartOptions()}/>
+        }
+    }
+
     return (
-        data.length > 0 ? <Line data={getChartData()} options={getChartOptions()}/> : <></>
+        data.length > 0 ? getChart() : <></>
     );
 };
 
