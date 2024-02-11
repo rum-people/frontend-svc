@@ -1,11 +1,11 @@
 import React from 'react';
 import './header.css';
-import SearchPanel from "./search-panel/search-panel";
-import messages from "../utils/messages";
-import TimeChooser from "./time-chooser/time-chooser";
-import SourceChooser from "./source-chooser/source-chooser";
+import SearchPanel from "../search-panel/search-panel";
+import messages from "../../utils/messages";
+import TimeChooser from "../time-chooser/time-chooser";
+import SourceChooser from "../source-chooser/source-chooser";
 
-function Header({term, handleTermChange, period, handlePeriodChange, handleSelectedSources}) {
+function Header({handleTermChange, handlePeriodChange, selectedSources, handleSelectedSources}) {
     return (
         <div className="app-header">
             <div className="tooltip-container">
@@ -13,15 +13,14 @@ function Header({term, handleTermChange, period, handlePeriodChange, handleSelec
                 <div className="tooltip">{messages.search_panel_hint}</div>
             </div>
             <div className="search-panel">
-                <SearchPanel term={term}
-                             handleTermChange={handleTermChange}
+                <SearchPanel handleTermChange={handleTermChange}
                 />
             </div>
             <div className="time-chooser-div">
                 <TimeChooser handlePeriodChange={handlePeriodChange}/>
             </div>
             <div className="source-chooser-div">
-                <SourceChooser handleSelectedSources={handleSelectedSources}/>
+                <SourceChooser selectedSources={selectedSources} handleSelectedSources={handleSelectedSources}/>
             </div>
         </div>
     );
