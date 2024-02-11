@@ -1,12 +1,29 @@
 .app-header {
+    position: sticky;
     display: flex;
     justify-content: center;
     align-items: center;
+    top: 0;
+    z-index: 1000;
+    background: white;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.search_panel {
-    width: 30%;
+.search-panel {
+    max-width: 30%;
+    min-width: 20%;
+    margin-right: 20px;
 }
+
+.time-chooser-div {
+    margin-left: 20px;
+}
+
+.source-chooser-div {
+    margin-left: 100px;
+    margin-top: 5px;
+}
+
 .tooltip-container {
     position: relative;
 }
@@ -45,5 +62,10 @@
 .question-mark {
     position: relative;
     z-index: 1;
+}
+
+.tooltip {
+    height: 190px !important;
+    width: 190px !important;
 }
 

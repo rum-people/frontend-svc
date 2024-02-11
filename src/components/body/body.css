@@ -32,9 +32,18 @@
     padding: 10px !important;
     margin: 10px;
 }
+
 .orange-rectangle {
-    background-color: #ffc7b6 !important;
+    background-color: #fcb8b0 !important;
     border-radius: 10px !important;
     padding: 10px !important;
     margin: 10px;
+}
+
+.other-info {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
