@@ -22,6 +22,11 @@
     height: 30px;
 }
 
+.emoji {
+    font-size: 2rem;
+    margin-left: 10px;
+}
+
 .post-content {
     flex: 1;
 }
@@ -29,6 +34,7 @@
 .post-title {
     margin-top: 0;
     margin-bottom: 5px;
+    font-size: 21px;
     cursor: pointer;
     color: black !important;
     text-decoration: none !important;
@@ -44,4 +50,5 @@
 
 .post-text {
     margin-top: 5px;
+    font-size: 17px;
 }

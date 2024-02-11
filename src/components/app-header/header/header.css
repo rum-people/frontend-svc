@@ -64,3 +64,8 @@
     z-index: 1;
 }
 
+.tooltip {
+    height: 190px !important;
+    width: 190px !important;
+}
+

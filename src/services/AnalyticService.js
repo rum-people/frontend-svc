@@ -1,53 +1,91 @@
 import axios from "axios";
+import consts from "../components/utils/consts";
 
 const BASE_URL = 'http://localhost:8000';
 
 export default class AnalyticService {
 
-    static async getTopKeywords(days, socialNetwork, keyword) {
-        return await axios.get(BASE_URL + "/analytics/keywords");
+    static async getTopKeywordsGeneral(days, socialNetwork) {
+        let url = BASE_URL + "/analytics/keywords/top";
+
+        if (days) {
+            url += `?days=${days}`;
+        }
+        
+        if (socialNetwork.length === 0 ) socialNetwork = [consts.News, consts.Reddit]
+        if (socialNetwork) {
+            const socialNetworkQueryParam = socialNetwork.join(',');
+            url += `${days ? '&' : '?'}social_network=${socialNetworkQueryParam}`;
+        }
+        console.log("getTopKeywordsGeneral url = " + url)
+        return await axios.get(url);
     }
 
-    static async getSentimentAnalysis(days, socialNetwork, keyword) {
+    static async getTopKeywordsForWord(days, socialNetwork, keyword) {
+        let url = BASE_URL + "/analytics/keywords";
+
+        if (days) {
+            url += `?days=${days}`;
+        }
+        
+        if (socialNetwork.length === 0 ) socialNetwork = [consts.News, consts.Reddit]
+        if (socialNetwork) {
+            const socialNetworkQueryParam = socialNetwork.join(',');
+            url += `${days ? '&' : '?'}social_network=${socialNetworkQueryParam}`;
+        }
+        if (keyword) {
+            url += `${days || keyword ? '&' : '?'}keyword=${keyword}`;
+        }
+        console.log("getTopKeywordsForWord url = " + url)
+        return await axios.get(url);
+    }
+
+    static async getSentimentAnalysisForWord(days, socialNetwork, keyword) {
         let url = BASE_URL + "/analytics/sentiment";
 
         if (days) {
             url += `?days=${days}`;
         }
-        if (socialNetwork && socialNetwork.length > 0) {
+        
+        if (socialNetwork.length === 0 ) socialNetwork = [consts.News, consts.Reddit]
+        if (socialNetwork) {
             const socialNetworkQueryParam = socialNetwork.join(',');
-            url += `${days ? '&' : '?'}socialNetwork=${socialNetworkQueryParam}`;
+            url += `${days ? '&' : '?'}social_network=${socialNetworkQueryParam}`;
         }
         if (keyword) {
-            url += `${days || socialNetwork ? '&' : '?'}quantity=${keyword}`;
+            url += `${days || socialNetwork ? '&' : '?'}keyword=${keyword}`;
         }
-        console.log("url = " + url)
-        return await axios.get(url, {
-            headers: {
-                'Access-Control-Allow-Origin' : '*',
-                'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
-            }
-        });
+        console.log("getSentimentAnalysisForWord url = " + url)
+        return await axios.get(url);
     }
 
-    static async getPostsByKeyword(keyword, socialNetwork, quantity) {
+    static async getSentimentAnalysisGeneral(days, socialNetwork) {
+        let url = BASE_URL + "/analytics/sentiment";
+
+        if (days) {
+            url += `?days=${days}`;
+        }
+        if (socialNetwork.length === 0 ) socialNetwork = [consts.News, consts.Reddit]
+        if (socialNetwork) {
+            const socialNetworkQueryParam = socialNetwork.join(',');
+            url += `${days ? '&' : '?'}social_network=${socialNetworkQueryParam}`;
+        }
+        console.log("getSentimentAnalysisGeneral url = " + url)
+        return await axios.get(url);
+    }
+
+    static async getPostsByKeyword(keyword, socialNetwork) {
         let url = BASE_URL + "/posts";
 
         if (keyword) {
             url += `?keyword=${keyword}`;
         }
+        if (socialNetwork.length === 0 ) socialNetwork = [consts.News, consts.Reddit]
         if (socialNetwork) {
-            url += `${keyword ? '&' : '?'}socialNetwork=${socialNetwork}`;
+            const socialNetworkQueryParam = socialNetwork.join(',');
+            url += `${keyword ? '&' : '?'}social_network=${socialNetworkQueryParam}`;
         }
-        if (quantity) {
-            url += `${keyword || socialNetwork ? '&' : '?'}quantity=${quantity}`;
-        }
-        console.log("url = " + url)
-        return await axios.get(url, {
-            headers: {
-                'Access-Control-Allow-Origin' : '*',
-                'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
-            }
-        });
+        console.log("getPostsByKeyword url = " + url)
+        return await axios.get(url);
     }
 }

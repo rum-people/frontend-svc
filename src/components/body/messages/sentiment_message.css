@@ -32,9 +32,10 @@
 .emotion-description {
     font-family: 'Arial', sans-serif;
     color: #555;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .info-text {
-    font-size: 22px;
+    font-size: 18px;
+    padding-top: 10px;
 }

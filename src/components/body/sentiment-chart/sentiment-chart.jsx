@@ -2,33 +2,23 @@ import React, {useEffect, useState} from 'react';
 import {Line} from 'react-chartjs-2';
 import {Chart, registerables} from 'chart.js';
 import 'chartjs-adapter-date-fns';
-import emotGeneral from "../emotions-general.json";
 import AnalyticService from "../../../services/AnalyticService";
+import dayjs from "dayjs";
 
 Chart.register(...registerables);
 
 const SentimentChart = ({term, period, selectedSources}) => {
-    const [data, setData] = useState();
-    const [chartData, setChartData] = useState({});
-    const [chartOptions, setChartOptions] = useState({})
-
+    const [data, setData] = useState([]);
     useEffect(() => {
         async function fetchData() {
             try {
-                console.log("Data term is = " + term)
+                // todo: update when period is changed
                 if (term === "") {
-                    console.log(emotGeneral)
-                    setData([emotGeneral]);
-                    console.log("data after = " + data)
-                    setChartData(getChartData())
-                    setChartOptions(getChartOptions())
-
-                } else {
-                    const response = await AnalyticService.getSentimentAnalysis(period, selectedSources, term);
-                    console.log("Received data:", response.data);
+                    const response = await AnalyticService.getSentimentAnalysisGeneral(period, selectedSources);
                     setData(response.data)
-                    setChartData(getChartData())
-                    setChartOptions(getChartOptions())
+                } else {
+                    const response = await AnalyticService.getSentimentAnalysisForWord(period, selectedSources, term);
+                    setData(response.data)
                 }
             } catch (error) {
                 console.error('Error fetching sentimental data:', error);
@@ -39,31 +29,35 @@ const SentimentChart = ({term, period, selectedSources}) => {
     }, [term, period, selectedSources]);
 
     function getChartData() {
-        console.log("ChartData = " + data)
         if (!data || data.length === 0) {
-            return {}; // Return an empty object if data is undefined or empty
+            return {};
         }
-        let datum = data[0];
+        const dateFormat = 'YYYY/MM/DD HH:mm:ss'
+
+        const allEmotions = Array.from(new Set(data.flatMap(item => item.emotions.map(emotion => emotion.label))));
         return {
-            labels: data.map(item => item.date),
-            datasets: datum.emotions.map((emotion, index) => ({
-                label: emotion.label,
-                data: data.map(item => item.emotions[index].score),
-                fill: true,
-                backgroundColor: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.5)`,
-                borderColor: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 1)`,
-                tension: 0.1,
-                responsive: true,
-                maintainAspectRatio: false
-            }))
+            labels: data.map(item => dayjs(item.timestamp, dateFormat).format('YYYY-MM-DD')),
+            datasets: allEmotions.map(emotionLabel => {
+                const emotionValues = data.map(item => {
+                    const emotion = item.emotions.find(emotion => emotion.label === emotionLabel);
+                    return emotion ? emotion.frequency : 0;
+                });
+
+                return {
+                    label: emotionLabel,
+                    data: emotionValues,
+                    fill: true,
+                    backgroundColor: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.5)`,
+                    borderColor: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 1)`,
+                    tension: 0.1,
+                    responsive: true,
+                    maintainAspectRatio: false
+                };
+            })
         };
     }
 
     function getChartOptions() {
-        console.log("ChartOptions = " + data)
-        if (!data || data.length === 0) {
-            return {}; // Return an empty object if data is undefined or empty
-        }
         return {
             scales: {
                 y: {
@@ -83,7 +77,7 @@ const SentimentChart = ({term, period, selectedSources}) => {
     }
 
     return (
-        data ? <> </> : <Line data={chartData} options={chartOptions}/>
+        data.length > 0 ? <Line data={getChartData()} options={getChartOptions()}/> : <></>
     );
 };
 

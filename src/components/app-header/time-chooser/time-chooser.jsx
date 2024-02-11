@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import './time-chooser.css';
 
 function TimeChooser({handlePeriodChange}) {
-    const [selectedPeriod, setSelectedPeriod] = useState(7); // Значення за замовчуванням - 30 днів
+    const [selectedPeriod, setSelectedPeriod] = useState(7);
 
     const handleSelect = (value) => {
         setSelectedPeriod(value);
