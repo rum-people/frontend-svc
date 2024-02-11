@@ -1,7 +1,7 @@
 import axios from "axios";
 import consts from "../components/utils/consts";
 
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = 'http://upstream';
 
 export default class AnalyticService {
 
